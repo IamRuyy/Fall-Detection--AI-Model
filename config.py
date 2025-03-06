@@ -1,0 +1,1 @@
+SIGNAL_R_URL = 'wss://localhost:7205/api/fail-detection-hub'

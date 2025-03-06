@@ -1,0 +1,10 @@
+__pycache__/
+keypoints.csv
+Fall_Detection_Documents/
+.vscode/
+*.mp4
+*.avi
+examples
+saved_falls
+
+fall_detector_env

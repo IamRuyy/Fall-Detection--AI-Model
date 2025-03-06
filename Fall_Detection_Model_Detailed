@@ -1,0 +1,43 @@
+digraph Fall_Detection_Model_Detailed {
+	Input [label="Input
+Video/Camera Feed"]
+	Source [label="get_source
+Capture Video/Load Dataset"]
+	Resize [label="resize
+Adjust Frame Size"]
+	Keypoints [label="extract_keypoints_parallel
+Extract Keypoints from Frame"]
+	Processor [label="Processor
+Process Frame for Keypoints & Bounding Boxes"]
+	Features [label="get_all_features
+Extract Bounding Box & Keypoint Features"]
+	Height [label="get_height_bbox
+Calculate Bounding Box Height"]
+	Ratio [label="get_ratio_bbox
+Calculate Width-to-Height Ratio"]
+	Angle [label="get_angle_vertical
+Calculate Keypoint Angle"]
+	FrameFeatures [label="get_frame_features
+Aggregate Features for LSTM"]
+	LSTM [label="LSTMModel
+Temporal Analysis for Fall Detection"]
+	Algorithm [label="alg2_sequential
+Predict Fall Events with LSTM Output"]
+	Alert [label="send_alert_message
+Send Fall Alert to Server"]
+	Record [label="Record Event
+Save Video & Metadata"]
+	Input -> Source
+	Source -> Resize
+	Resize -> Keypoints
+	Keypoints -> Processor
+	Processor -> Features
+	Features -> Height
+	Features -> Ratio
+	Features -> Angle
+	Features -> FrameFeatures
+	FrameFeatures -> LSTM
+	LSTM -> Algorithm
+	Algorithm -> Alert
+	Alert -> Record
+}

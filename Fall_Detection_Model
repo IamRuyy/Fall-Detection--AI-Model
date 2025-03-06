@@ -1,0 +1,19 @@
+digraph Fall_Detection_Model {
+	Input [label="Input
+Video/Camera Feed"]
+	Preprocess [label="Preprocessing
+Resize and Get Source"]
+	Keypoints [label="Pose Estimation
+Keypoint Extraction"]
+	Features [label="Feature Extraction
+(get_all_features)"]
+	LSTM [label="LSTM Model
+(Fall Detection)"]
+	Alert [label="Alert System
+(send_alert_message)"]
+	Input -> Preprocess
+	Preprocess -> Keypoints
+	Keypoints -> Features
+	Features -> LSTM
+	LSTM -> Alert
+}
